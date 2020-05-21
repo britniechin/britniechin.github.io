@@ -24,18 +24,23 @@
             function playSongs(songID) {
                 if (songID == 0) {
                     var music=document.getElementById('Atoms');
+                    music.volume = 0.3;
                     music.play();
                 } else if (songID == 1) {
                     var music=document.getElementById('HigherGround');
+                    music.volume = 0.5;
                     music.play();
                 } else if (songID == 2) {
                     var music=document.getElementById('44More');
+                    music.volume = 0.5;
                     music.play();
                 } else if (songID == 3) {
                     var music=document.getElementById('DownBelow');
+                    music.volume = 0.5;
                     music.play();
                 } else if (songID == 4) {
                     var music=document.getElementById('BestPart');
+                    music.volume = 0.5;
                     music.play();
                 }
             }
@@ -238,7 +243,7 @@
             <!-- Collapse container -->
             <div class="collapse" id="albumCollapse">
                 <h4 class="text-center">Please hover your mouse over the albums
-                    to hear some music!</h4>
+                    to hear some music! (does not work on Safari)</h4>
                 <h4 class="text-center text-danger">Warning: Songs are not censored</h4>
                 <!-- Using flex box to put pictures in row -->
                 <div class="d-flex flex-wrap" style="margin-bottom: 5%;">
