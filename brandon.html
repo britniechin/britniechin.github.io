@@ -19,16 +19,82 @@
             integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
             crossorigin="anonymous"></script>
         <link rel="stylesheet" href="Styles/brandonStyles.css">
-        <style>
-            /* bolds the first column of the contact table, commented out since bootstrap has this function 
-            td:first-child {
-                font-weight: bold;
+        <!-- script for playing music on hover. got from https://stackoverflow.com/questions/14926306/javascript-play-sound-on-hover-stop-and-reset-on-hoveroff -->
+        <script>
+            function playSongs(songID) {
+                if (songID == 0) {
+                    var music=document.getElementById('Atoms');
+                    music.play();
+                } else if (songID == 1) {
+                    var music=document.getElementById('HigherGround');
+                    music.play();
+                } else if (songID == 2) {
+                    var music=document.getElementById('44More');
+                    music.play();
+                } else if (songID == 3) {
+                    var music=document.getElementById('DownBelow');
+                    music.play();
+                } else if (songID == 4) {
+                    var music=document.getElementById('BestPart');
+                    music.play();
+                }
             }
-            */
-        </style>
+            // don't want the song to keep playing so this stops it when the mouse is no longer hovered over
+            function stopSongs(songID) {
+                if (songID == 0) {
+                    var music = document.getElementById('Atoms')
+                    music.pause();
+                    music.currentTime = 0;
+                } else if (songID == 1) {
+                    var music = document.getElementById('HigherGround')
+                    music.pause();
+                    music.currentTime = 0;
+                } else if (songID == 2) {
+                    var music = document.getElementById('44More')
+                    music.pause();
+                    music.currentTime = 0;
+                } else if (songID == 3) {
+                    var music = document.getElementById('DownBelow')
+                    music.pause();
+                    music.currentTime = 0;
+                } else if (songID == 4) {
+                    var music = document.getElementById('BestPart')
+                    music.pause();
+                    music.currentTime = 0;
+                }
+            }
+        </script>
+        <!-- prints out my name one letter at a time -->
+        <script>
+            var text = "Brandon Hu";
+            var i = 0;
+            var speed = 300;
+            // loops until i is the length of the text
+            function typeOutName() {
+                if (i < text.length) {
+                    document.getElementById("myName").innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(typeOutName, speed);
+                }
+            }
+        </script>
+        <script>
+            // start at 1 so it changes to next pic on click instead of same one
+            var currentPic = 1;
+            // array for storing name of pictures, allows me to add more later without hassle
+            var dogPicArr = ["Dog0.jpg", "Dog1.jpg", "Dog2.jpg", "Dog3.jpg", "Dog4.jpg"];
+            function newDogPic() {
+                // resetting to first pic if it is on last pic
+                if (currentPic == dogPicArr.length) {
+                    currentPic = 0;
+                }
+                document.getElementById('dogpic').src="Media/Dog Pics/" + dogPicArr[currentPic];
+                currentPic++;
+            }
+        </script>
     </head>
 
-    <body>
+    <body onload="typeOutName()">
         <!-- Got navbar from this site: https://getbootstrap.com/docs/4.0/components/navbar/ -->
         <nav class="navbar navbar-expand-lg navbar-dark navbar fixed-top"
             style="background-color: #158bda;">
@@ -53,9 +119,11 @@
 
         <!-- Using title ID -->
         <div id="title">
-            <h1>Brandon Hu</h1>
+            <h1 id="myName"></h1>
         </div>
-
+        <div class="text-center" style="margin-bottom: 3%;">
+            <button class="btn btn-primary" onclick="alert('An assassin')">What has two butts and kills?</button>
+        </div>
         <!-- Using bootstrap container for all content -->
         <div class="container-md">
             <!-- Divided content into rows -->
@@ -85,9 +153,10 @@
                     </table>
                 </div>
                 <div class="col-md">
-                    <h3>About me</h3>
+                    <h3>About Me</h3>
+                    
                     <p>
-                        I am a currently a junior at the University of
+                        I am currently a junior at the University of
                         Washington Bothell. My major is Applied Computing
                         and I have experience with Java and C++. Currently, I am
                         working at the UW/Cascadia College as
@@ -134,9 +203,10 @@
             <div class="row">
                 <div class="col-lg">
                     <h3>Here is my dog Coco:</h3>
+                    <h4 class="text-warning">Click for more pics!</h4>
                     <!-- Making pic opaque when hovered -->
                     <!-- Using id with external css -->
-                    <img id="dogpic" src="Media/Brandons_Dog.jpg" alt="A picture
+                    <img onclick="newDogPic()" id="dogpic" src="Media/Dog Pics/Dog0.jpg" alt="A picture
                         of Brandon's Dog" title="Coco">
                 </div>
 
@@ -169,33 +239,37 @@
             <div class="collapse" id="albumCollapse">
                 <h4 class="text-center">Please hover your mouse over the albums
                     to hear some music!</h4>
-                <h4 class="text-center text-danger">(Work in progress)</h4>
+                <h4 class="text-center text-danger">Warning: Songs are not censored</h4>
                 <!-- Using flex box to put pictures in row -->
                 <div class="d-flex flex-wrap" style="margin-bottom: 5%;">
-                    <div class="albumimg p-2 mr-auto">
-                        <img src="Media/Album Art/nova.jpg" width="200"
-                            alt="Album art of NOVA by RL Grime" title="Atoms -
-                            Said the Sky Remix">
+                    <div class="p-2 mr-auto">
+                        <img class="albumimg" onmouseover="playSongs(0)" onmouseout="stopSongs(0)" src="Media/Album Art/nova.jpg" width="200"
+                            alt="Album art of NOVA by RL Grime" title="Atoms - Said the Sky Remix">
+                        <audio id='Atoms' src="Media/Album Art/Music/Atoms.wav" type="audio/wav"></audio>
                     </div>
-                    <div class="albumimg p-2 mr-auto">
-                        <img src="Media/Album Art/a moment apart.jpg"
+                    <div class="p-2 mr-auto">
+                        <img class="albumimg" onmouseover="playSongs(1)" onmouseout="stopSongs(1)" src="Media/Album Art/a moment apart.jpg"
                             width="200" alt="Album art of A Moment Apart by
                             ODESZA" title="Higher Ground (feat. Naomi Wild)">
+                        <audio id='HigherGround' src="Media/Album Art/Music/Higher Ground.wav" type="audio/wav"></audio>
                     </div>
-                    <div class="albumimg p-2 mr-auto">
-                        <img src="Media/Album Art/bobby tarantino.jpg"
+                    <div class="p-2 mr-auto">
+                        <img class="albumimg" onmouseover="playSongs(2)" onmouseout="stopSongs(2)" src="Media/Album Art/bobby tarantino.jpg"
                             width="200" alt="Album art of Bobby Tarantino II by
                             Logic" title="44 More">
+                        <audio id='44More' src="Media/Album Art/Music/44 More.wav" type="audio/wav"></audio>
                     </div>
-                    <div class="albumimg p-2 mr-auto">
-                        <img src="Media/Album Art/down below.jpg" width="200"
+                    <div class="p-2 mr-auto">
+                        <img class="albumimg" onmouseover="playSongs(3)" onmouseout="stopSongs(3)" src="Media/Album Art/down below.jpg" width="200"
                             alt="Album art of Down Below by Roddy Rich"
                             title="Down Below">
+                        <audio id='DownBelow' src="Media/Album Art/Music/Down Below.wav" type="audio/wav"></audio>
                     </div>
-                    <div class="albumimg p-2 mr-auto">
-                        <img src="Media/Album Art/Freudian.jpg" width="200"
+                    <div class="p-2 mr-auto">
+                        <img class="albumimg" onmouseover="playSongs(4)" onmouseout="stopSongs(4)" src="Media/Album Art/Freudian.jpg" width="200"
                             alt="Album art of Freudian by Daniel Caesar"
                             title="Best Part (feat. H.E.R.)">
+                        <audio id='BestPart' src="Media/Album Art/Music/Best Part.wav" type="audio/wav"></audio>
                     </div>
                 </div>
             </div>
