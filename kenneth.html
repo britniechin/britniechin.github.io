@@ -18,8 +18,30 @@
                 color:rgb(255, 255, 255);
             }
         </style>
+            <script>
+                // start at 1 so it changes to next pic on click instead of same one
+                //Declare a variable and set its value.
+                var currentPic = 1;
+                //Create a function.
+                function newAvatar() {
+                    // resetting to first pic if it is on last pic
+                    //Throw in some conditional logic (AKA an if-then statement or a switch of some sort).
+                        //Create a loop that runs multiple times until some end condition is met.
+                        //Technically a loop, although not a real one, I just had no idea what to impliment a loop for on a website
+                    if (currentPic == 105) {
+                        currentPic = 1;
+                    }
+                    document.getElementById('Avatar').src="Media/faces/" + currentPic + ".gif";
+                    currentPic++;
+                }
+                function differentCookies(){
+                    //Use an array (AKA a table of variables stored as a set).
+                    var bakedGoods = ["Snickerdoodles", " Chocolate Chip Cookies", " Oatmeal Raisin Cookies", " Sugar Cookies"];
+                    document.getElementById("cookies").innerHTML = bakedGoods;
+                }
+            </script>
     </head>
-    <body>
+    <body onload = "differentCookies()">
         <!-- This makes the nav bar links to the left, makes the color of the bar white, and makes it to where it follows when the user scrolls-->
         <nav class="navbar navbar-expand-sm bg-light fixed-top">
             <!-- Brand/logo -->
@@ -101,23 +123,17 @@
                     </div>
                 </div>
                 <div class="row">
+                    <div class="col-4">
+                    </div>
                     <!-- Aligns text so that its centered-->
                     <div style = "text-align: center"><br>
-                        <h2><span style="background-color:#f73535; color:rgb(255, 255, 255); padding: 0px 15px;">Picture of me</span></h2>
+                        <h2><span style="background-color:#f73535; color:rgb(255, 255, 255); padding: 0px 15px;">Picture of different avatars</span></h2>
+                        <h4 class="text-danger">Click for more pics!</h4>
                     <!-- added a flex/flex wrap to the photos so they are correctly placed on the website-->
-                            <div class="d-flex flex-wrap" style="margin-bottom: 7%;">
-                                <!-- this is to put a picture of myself on the website. Width of 500 so it fits right on the page-->
-                                <!-- "or specific unique elements that need to be styled a certain way through using the id="" attribute and #id in the stylesheet."-->
-                                <!-- P-2 is added to add spacing inbetween the photos-->
-                                <div class="p-2">
-                                    <img id="profileImage" src= "https://media.discordapp.net/attachments/103660457113452544/710356143922479184/IMG_3950.JPG?width=625&height=677">
-                                </div>
-                                <div class="p-2">
-                                    <img id="profileImageTwo" src= "Media/Myself2.jpg">
-                                </div>
-                                <div class="p-2">
-                                    <img id="profileImageThree" src= "https://media.discordapp.net/attachments/103660457113452544/710356194698461224/IMG_3951.JPG?width=614&height=677">
-                                </div>
+                            <div class="col-md" style="margin-bottom: 7%;">
+                                <!--Make some element execute the function when clicked on or is interacted with somehow by the user.-->
+                                    <img onclick="newAvatar()" id="Avatar" src="Media/faces/1.gif" alt="A picture
+                                    of different avatars!" title="Avatar">
                             </div>
                     </div>
                 </div>
@@ -148,6 +164,12 @@
                             </ol>
                             </div>
                         </div>
+            </div>
+            <br>
+            <div>
+                <h3 span style ="text-align: center">Different cookies I like</h3>
+                <!-- Calling the array to print the array values-->
+                <h5 id = "cookies" span style ="text-align: center"></h5>
             </div>
             <div> 
             <!-- "and hover and visibility changes links or other element" --> 
