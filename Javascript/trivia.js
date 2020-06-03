@@ -1,7 +1,6 @@
+var pos = 0, test, test_status, question, choice, choices, chA, chB, chC, correct = 0; //set all the variables to 0
 
-var pos = 0, test, test_status, question, choice, choices, chA, chB, chC, correct = 0;
-
-var questions = [
+var questions = [ //created an array with all the questions that I'm asking in my quiz
   {
       question: "What major am I in?",
       a: "Interactive Media Design",
@@ -36,6 +35,7 @@ function get(x){
   return document.getElementById(x);
 }
 
+//this function is responsible for loading the questions and showing how many questions the user got correct
 function loadQuestion(){
   test = get("test");
   if(pos >= questions.length){
@@ -46,8 +46,9 @@ function loadQuestion(){
     correct = 0;
     return false;
   }
-  get("test_status").innerHTML = "Question "+(pos+1)+" of "+questions.length;
+  get("test_status").innerHTML = "Question "+(pos+1)+" of "+questions.length; //get function to display the number question the user is on
   
+  //sets the ch variable to the 3 indices in the array
   question = questions[pos].question;
   chA = questions[pos].a;
   chB = questions[pos].b;
@@ -60,11 +61,13 @@ function loadQuestion(){
   test.innerHTML += "<label> <input type='radio' name='choices' value='C'> "+chC+"</label><br><br>";
   test.innerHTML += "<button onclick='checkAnswer()'>Submit Answer</button>";
 }
+
+//this function checks if the user selected the right answer
 function checkAnswer(){
   // use getElementsByName because we have an array which it will loop through
   choices = document.getElementsByName("choices");
-  for(var i=0; i<choices.length; i++){
-    if(choices[i].checked){
+  for(var i=0; i<choices.length; i++){ //traverses through the choice array
+    if(choices[i].checked){ //using a control structure
       choice = choices[i].value;
     }
   }
@@ -75,7 +78,7 @@ function checkAnswer(){
   }
   // changes position of which character user is on
   pos++;
-  // then the renderQuestion function runs again to go to next question
+  // then the loadQuestion function runs again to go to next question
   loadQuestion();
 }
 // Add event listener to call renderQuestion on page load event

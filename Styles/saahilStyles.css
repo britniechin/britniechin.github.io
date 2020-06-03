@@ -73,11 +73,11 @@ a:hover{ /* When the user hover's their mouse over an "a" tag, the color of the 
     filter: invert(100%);
 }
 
-.jumbotron {
+.jumbotron { /* This changes the background of the jumbotron */
     background: url('/Media/Hacker.jpg');
 }
 
-.clock{
+.clock{ /* This class is responsible for the clock */
     margin-left: auto;
     margin-right:auto;
     margin-top: auto;
@@ -94,7 +94,7 @@ a:hover{ /* When the user hover's their mouse over an "a" tag, the color of the 
     box-shadow: inset 0 0 30px rgba(0,0,0,.1), 0 20px 20px rgba(0,0,0,.2), 0 0 0 4px rgba(255,255,255,1);
 }
 
-.clock::before{
+.clock::before{ /* this changes the appearance of the clock by changing the width and height along with the background and border*/
     content: '';
     position: absolute;
     width: 15px;
@@ -105,33 +105,33 @@ a:hover{ /* When the user hover's their mouse over an "a" tag, the color of the 
     border-radius: 50%;
 }
 
-.hour, .min, .sec{
+.hour, .min, .sec{ /* changes the position of the hour, min, and sec classes */
     position: absolute;
 }
 
-.hour, .hr{
+.hour, .hr{ /* sets the width and height of the hour and hr class */
     width: 160px;
     height: 160px;
 }
 
-.min, .mn{
+.min, .mn{ /* sets the width and height of the min and mn class */
     width: 190px;
     height: 190px;
 }
 
-.sec, .sc{
+.sec, .sc{ /* sets the width and height of the sec and sc class */
     width: 230px;
     height: 230px;
 }
 
-.hr, .mn, .sc{
+.hr, .mn, .sc{ /* this modifies the hr, mn, and sc class */
     display: flex;
     justify-content: center;
     position: absolute;
     border-radius: 50%;
 }
 
-.hr::before{
+.hr::before{ /* the next three classes are resposnible for changing the look of the hour hand, minute hand, and the second hand */
     content: '';
     position: absolute;
     width: 8px;
