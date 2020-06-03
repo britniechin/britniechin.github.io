@@ -73,6 +73,10 @@ a:hover{ /* When the user hover's their mouse over an "a" tag, the color of the 
     filter: invert(100%);
 }
 
+.jumbotron {
+    background: url('/Media/Hacker.jpg');
+}
+
 .clock{
     margin-left: auto;
     margin-right:auto;
