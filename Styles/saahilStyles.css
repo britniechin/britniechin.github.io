@@ -74,7 +74,7 @@ a:hover{ /* When the user hover's their mouse over an "a" tag, the color of the 
 }
 
 .jumbotron { /* This changes the background of the jumbotron */
-    background: url('/Media/Hacker.jpg');
+    background: url('/Media/Hacking.gif');
 }
 
 .clock{ /* This class is responsible for the clock */
