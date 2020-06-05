@@ -20,6 +20,23 @@
             src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
             integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
             crossorigin="anonymous"></script>
+
+
+        <script>
+                // start at 1 so it changes to next pic on click instead of same one
+                var currentPic = 1;
+                // array for storing name of pictures, allows me to add more later without hassle
+                //loop through the photos 
+                var quarPicArr = ["bikeride.jpg", "burnt.jpg", "hat.jpeg", "tulip.jpg"];
+                function newQuarPic() {
+                    // resetting to first pic if it is on last pic
+                    if (currentPic == quarPicArr.length) {
+                        currentPic = 0;
+                    }
+                    document.getElementById('quarpic').src="Media/quar/" + quarPicArr[currentPic];
+                    currentPic++;
+                }
+            </script>
         <!-- Specifc a tag in h1-->
         <style>
             h1{
@@ -49,8 +66,39 @@
                 </li>
             </ul>
         </nav>
-        <div>
+
+
+        <style>
+           h4 {text-align: center;}
+         </style>
+        <div style="width:1024px; margin:auto;">
             <h1 class="text-center" style="margin-bottom: 20px;">Britnie Chin</h1>
+            <p id="greet">Good Evening!</p>
+        
+            <script>
+                //conditional logic-if then statement
+            if (new Date().getHours() < 18) {
+              document.getElementById("greet").innerHTML = "Good day!";
+            }
+            </script>
+            <h4>
+                <button onclick="typeWriter()">Click me</button>
+            </h4>
+            
+                <p id="demo"></p>
+                <script>
+                    var i = 0;
+                    var txt = 'Hello there welcome to my page!';
+                    var speed = 50;
+                    
+                    function typeWriter() {
+                      if (i < txt.length) {
+                        document.getElementById("demo").innerHTML += txt.charAt(i);
+                        i++;
+                        setTimeout(typeWriter, speed);
+                      }
+                    }
+                </script>
         </div>
         <div class="container-md">
             <!-- Divided content into rows -->
@@ -80,8 +128,10 @@
                         I am currently in my second year at the University of
                         Washington Bothell studying business and a prospective
                         Human Centered Design and Engineering student. I want to
-                        combine my business and UX background to translate business
-                        objectives into responsible and satisfying user experiences.
+                        combine my business and UX background to translate
+                        business
+                        objectives into responsible and satisfying user
+                        experiences.
                     </p>
                     <!--Created a bulleted list of the research I'm in-->
                     <p>Here are some research I have partcipated in:</p>
@@ -106,18 +156,21 @@
                 please connect with me on <a
                     href="https://www.linkedin.com/in/britniechin">LinkedIn</a>!
             </p>
-            <p>Here's a photo of me on a bike ride during quarantine!</p>
+            <p>Here's some photos throughout quaratine!</p>
             <!-- <img src="Media/bikeride.jpg" width="500"> -->
             <!--INSTR: I am not sure why, but the image hover event seems to be freaking out, causing the image to blink rapidly instead of just turning invisible... Are you seeing that too?-->
-            <div class = "row">
-                <div class = "col-md">
-                    <div class="d-flex flex-wrap" style="margin-bottom: 7%; text-align: center;">
-                        <div class="p-2">
-                            <img id="profile" src="Media/bikeride.jpg">
+            <div class="row">
+                <div>
+                        <div>
+                            <h4>Click for more pics!</h4>
+                            <!-- Making pic opaque when hovered -->
+                            <!-- Using id with external css -->
+                            <img onclick="newQuarPic()" id="quarpic"
+                                src="Media/quar/bikeride.jpg" alt="Quarantine Collection" title="Bike Ride">
                         </div>
                     </div>
                 </div>
-                <div class ="col-md">
+                <div class="col-md">
                     <p>Here are my favorite bike routes:</p>
                     <!--Ordered list to create bike routes numbered-->
                     <!--The list tag allowed me to put values inside the ordered list-->
@@ -138,6 +191,5 @@
                         <span id="shrug"> ¯\_(ツ)_/¯</span>
                     </strong></p>
             </div>
-        </div>
     </body>
 </html>
